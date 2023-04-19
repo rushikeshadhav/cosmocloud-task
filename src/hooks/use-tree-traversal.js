@@ -1,6 +1,4 @@
 const useTreeTraversal = () => {
-  // Add a file or folder in tree
-  // Can be optimised using Dynamic Programming
   const insertNode = function (tree, folderId, item) {
     if (tree.id === folderId) {
       tree.items.push({
@@ -56,7 +54,7 @@ const useTreeTraversal = () => {
 
     // Return the updated tree with the node renamed
     return { ...tree, items: latestItems };
-  }; // Do it Yourself
+  };
 
   return { insertNode, deleteNode, renameNode };
 };
