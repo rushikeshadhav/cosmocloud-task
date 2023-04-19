@@ -20,11 +20,8 @@ const useTreeTraversal = () => {
 
   const deleteNode = (tree, folderId) => {
     if (tree.id === folderId) {
-      // If this is the node we want to delete, remove it from the tree
       return null;
     }
-
-    // Recursively search for the node to delete in the child nodes
     let latestItems = [];
     for (let i = 0; i < tree.items.length; i++) {
       const child = tree.items[i];
@@ -33,30 +30,10 @@ const useTreeTraversal = () => {
         latestItems.push(result);
       }
     }
-
-    // Return the updated tree with the node removed
     return { ...tree, items: latestItems };
   };
 
-  const renameNode = (tree, nodeId, newName) => {
-    if (tree.id === nodeId) {
-      // If this is the node we want to rename, update its name property
-      return { ...tree, name: newName };
-    }
-
-    // Recursively search for the node to rename in the child nodes
-    let latestItems = [];
-    for (let i = 0; i < tree.items.length; i++) {
-      const child = tree.items[i];
-      const result = renameNode(child, nodeId, newName);
-      latestItems.push(result);
-    }
-
-    // Return the updated tree with the node renamed
-    return { ...tree, items: latestItems };
-  };
-
-  return { insertNode, deleteNode, renameNode };
+  return { insertNode, deleteNode };
 };
 
 export default useTreeTraversal;

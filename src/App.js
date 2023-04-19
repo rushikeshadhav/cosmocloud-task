@@ -8,7 +8,6 @@ export default function App() {
 
   const { insertNode } = useTreeTraversal();
   const { deleteNode } = useTreeTraversal();
-  const { renameNode } = useTreeTraversal();
 
   const handleInsertNode = (folderId, item) => {
     const finalTree = insertNode(data, folderId, item);
@@ -18,11 +17,6 @@ export default function App() {
 
   const handleDeleteNode = (folderId) => {
     const finalTree = deleteNode(data, folderId);
-
-    setfieldData(finalTree);
-  };
-  const handleRenameNode = (nodeId, newName) => {
-    const finalTree = renameNode(data, nodeId, newName);
 
     setfieldData(finalTree);
   };
@@ -51,7 +45,6 @@ export default function App() {
         <Field
           handleInsertNode={handleInsertNode}
           handleDeleteNode={handleDeleteNode}
-          handleRenameNode={handleRenameNode}
           fieldData={fieldData}
         />
         <button

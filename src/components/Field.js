@@ -1,13 +1,9 @@
 import { useState } from "react";
 
-function Field({
-  handleInsertNode,
-  handleDeleteNode,
-  handleRenameNode,
-  fieldData,
-}) {
+function Field({ handleInsertNode, handleDeleteNode, fieldData }) {
   const [expand, setExpand] = useState(false);
   const [changeText, setChangeText] = useState(false);
+  const [changeTextValue, setChangeTextValue] = useState(fieldData.name);
   const [style, setStyle] = useState({ display: "none" });
 
   const handleNewFolder = (e) => {
@@ -35,7 +31,7 @@ function Field({
   const handleChangeText = (e) => {
     if (e.keyCode === 13 && e.target.value) {
       setChangeText(!changeText);
-      handleRenameNode(fieldData.id, e.target.value);
+      setChangeTextValue(e.target.value);
     }
   };
 
@@ -58,7 +54,7 @@ function Field({
               />
             </div>
           ) : (
-            <span onDoubleClick={handleDoubleClick}>{fieldData.name}</span>
+            <span onDoubleClick={handleDoubleClick}>{changeTextValue}</span>
           )}
           <select
             onChange={handleSelect}
@@ -98,7 +94,6 @@ function Field({
             <Field
               handleInsertNode={handleInsertNode}
               handleDeleteNode={handleDeleteNode}
-              handleRenameNode={handleRenameNode}
               key={item.id}
               fieldData={item}
             />
