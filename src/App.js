@@ -28,8 +28,12 @@ export default function App() {
   };
   const handleNewFolder = (e) => {
     e.stopPropagation();
-    // setExpand(true);
     handleInsertNode(fieldData.id, e.target.value);
+  };
+
+  const logData = () => {
+    console.log(fieldData);
+    alert("The data has been logged to console");
   };
 
   return (
@@ -50,10 +54,13 @@ export default function App() {
           handleRenameNode={handleRenameNode}
           fieldData={fieldData}
         />
+        <button
+          className="bg-gray-300 p-3 rounded-lg block m-auto mt-5"
+          onClick={() => logData()}
+        >
+          Save
+        </button>
       </div>
     </div>
-    // <div className="flex items-center justify-center h-screen">
-    //   <div className="bg-gray-500 w-1/2">DYGQY</div>
-    // </div>
   );
 }
